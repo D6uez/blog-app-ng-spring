@@ -19,8 +19,6 @@ import io.david.springblogbackend.services.MyUserDetailService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // Custom implementation of userdetailsservice to look up user by username in
-    // mysql database
     private MyUserDetailService userDetailsService;
     private JwtRequestFilter jwtRequestFilter;
 
@@ -31,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /* ---------- Authentication ---------- */
 
-    // Configure the managerbuilder to work with mysql
+    // Configure AuthenticationManagerBuilder to work with mysql
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
@@ -56,8 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/blog/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/").permitAll()
                 .and().sessionManagement()
