@@ -2,6 +2,7 @@ package io.david.springblogbackend.controllers;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = { "", "/" })
     List<User> getUserList() {
         return userService.getUserList();
@@ -34,7 +36,6 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping(value = { "", "/" })
     User newUser(@RequestBody User user) {
         return userService.createUser(user);
     }
