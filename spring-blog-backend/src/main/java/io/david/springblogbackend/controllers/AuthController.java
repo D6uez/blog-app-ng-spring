@@ -7,11 +7,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.david.springblogbackend.models.AuthenticationRequest;
 import io.david.springblogbackend.models.AuthenticationResponse;
@@ -22,7 +23,7 @@ import io.david.springblogbackend.services.MyUserDetailService;
 import io.david.springblogbackend.utils.JwtUtils;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-@Controller
+@RestController
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -30,17 +31,19 @@ public class AuthController {
     private MyUserDetailService userDetailService;
     private JwtUtils jwtUtils;
     private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     public AuthController(AuthenticationManager authenticationManager, MyUserDetailService userDetailService,
-            JwtUtils jwtUtils, UserRepository userRepository) {
+            JwtUtils jwtUtils, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userDetailService = userDetailService;
         this.jwtUtils = jwtUtils;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody AuthenticationRequest authenticationRequest)
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody AuthenticationRequest authenticationRequest)
             throws Exception {
 
         try {
@@ -73,7 +76,7 @@ public class AuthController {
                     .body(new String("Error: Username is already taken!"));
         }
 
-        User newUser = new User(registerRequest.getUsername(), registerRequest.getPassword(),
+        User newUser = new User(registerRequest.getUsername(), passwordEncoder.encode(registerRequest.getPassword()),
                 registerRequest.getFirstName(), registerRequest.getLastName());
 
         if (newUser.getRoles() == null) {

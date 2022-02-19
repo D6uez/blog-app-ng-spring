@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import io.david.springblogbackend.models.MyUserDetails;
 import io.david.springblogbackend.models.User;
@@ -21,6 +22,7 @@ public class MyUserDetailService implements UserDetailsService {
     // Returns an instance of the UserDetails, that is found(maybe) in the database
     // by the username
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
 
