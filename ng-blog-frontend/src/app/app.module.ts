@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
