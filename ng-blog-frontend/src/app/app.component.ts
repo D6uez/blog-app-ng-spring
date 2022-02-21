@@ -8,7 +8,7 @@ import { TokenStorageService } from './_services/token-storage.service';
 })
 export class AppComponent implements OnInit {
   title = 'ng-blog-frontend';
-  private roles: string[] = [];
+  private roles: string = '';
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;

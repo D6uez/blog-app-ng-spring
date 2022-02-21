@@ -2,6 +2,7 @@ package io.david.springblogbackend.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.david.springblogbackend.models.Blog;
 import io.david.springblogbackend.services.BlogService;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/blog")
 @RestController
 public class BlogController {

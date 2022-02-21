@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { BlogListComponent } from './blogs/blog-list.component';
+import { BlogDetailComponent } from './blogs/blog-detail.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
+    BlogListComponent,
+    BlogDetailComponent,
   ],
   imports: [
     BrowserModule,

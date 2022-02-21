@@ -23,8 +23,8 @@ import io.david.springblogbackend.services.MyUserDetailService;
 import io.david.springblogbackend.utils.JwtUtils;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RestController
 @RequestMapping("/auth")
+@RestController
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
