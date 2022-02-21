@@ -64,7 +64,8 @@ public class AuthController {
 
         // After token is generated, return a response with the generated token for
         // client to use with each future request
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userDetails.getUsername(),
+                userDetails.getAuthorities().toString()));
 
     }
 
