@@ -22,7 +22,11 @@
                                             | date:"medium"}}</span>
                                     </i>
                                 </p>
-                                <a [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full Blog</a>
+                                <a id="blg" [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full
+                                    Blog</a>
+                                <a id="blg" [routerLink]="['/blogs']" class="btn btn-danger btn-sm"
+                                    *ngIf="isAdmin">Delete
+                                    Blog</a>
                             </div>
                         </div>
                     </tr>

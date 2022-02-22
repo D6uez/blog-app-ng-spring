@@ -13,9 +13,15 @@ export class BlogService {
     private dbUrl = "http://localhost:8080/blog";
 
     constructor(private http: HttpClient) { }
-
+    //Makes a get request to api and retrieves a list of all blogs
     getBlogs(): Observable<IBlog[]> {
         return this.http.get<IBlog[]>(this.dbUrl).pipe(tap(data => console.log("All", JSON.stringify(data))), catchError(this.handleError));
+    }
+
+    //Makes a get request to api and retrieves a single blog based on the id in the url parameter
+    getSingleBlog(id: number): Observable<IBlog> {
+        return this.http.get<IBlog>(this.dbUrl + "/" + id).pipe(tap(data => console.log("All", JSON.stringify(data))),
+            catchError(this.handleError));
     }
 
     private handleError(err: HttpErrorResponse) {
