@@ -36,7 +36,7 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
-    @PostMapping(value = { "", "/" })
+    @PostMapping("/newBlog")
     Blog newBlog(@RequestBody Blog newBlog) {
         return blogService.createBlog(newBlog);
     }

@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BlogListComponent } from './blogs/blog-list.component';
 import { BlogDetailComponent } from './blogs/blog-detail.component';
+import { CreateBlogComponent } from './blogs/create-blog.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BlogDetailComponent } from './blogs/blog-detail.component';
     BoardUserComponent,
     BlogListComponent,
     BlogDetailComponent,
+    CreateBlogComponent
   ],
   imports: [
     BrowserModule,
