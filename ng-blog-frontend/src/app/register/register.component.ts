@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 
@@ -35,7 +36,8 @@ export class RegisterComponent implements OnInit {
         this.isRegisterFailed = false;
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        console.log(err);
+        this.errorMessage = err.message;
         this.isRegisterFailed = true;
       }
     });

@@ -1,37 +1,40 @@
 <div class="card-header bg-light">
     {{pageTitle}}
 </div>
-<div class="card">
+<div class="card" style="width:50rem; margin: 1.75rem auto;">
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table" *ngIf="blogs.length">
-                <tbody>
-                    <tr *ngFor="let blog of blogs">
-                        <div class="card">
-                            <div class="card-header">
-                                Topic: {{ blog.topic | titlecase}}
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table" *ngIf="blogs.length">
+                    <tbody>
+                        <tr *ngFor="let blog of blogs">
+                            <div class="card">
+                                <div class="card-header">
+                                    Topic: {{ blog.topic | titlecase}}
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a [routerLink]="['/blogs', blog.id]"> {{blog.title}}</a>
+                                    </h5>
+                                    <p class="card-text" style="color:grey">
+                                        <i>
+                                            <span>Published on: {{blog.publishedDate
+                                                | date:"medium"}}</span>
+                                            <br>
+                                            <span *ngIf=blog.updatedDate>Edited on: {{blog.updatedDate
+                                                | date:"medium"}}</span>
+                                        </i>
+                                    </p>
+                                    <a id="blg" [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full
+                                        Blog</a>
+                                    <a id="blg" [routerLink]="['/blogs']" class="btn btn-danger btn-sm"
+                                        *ngIf="isAdmin">Delete
+                                        Blog</a>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a [routerLink]="['/blogs', blog.id]"> {{blog.title}}</a></h5>
-                                <p class="card-text" style="color:grey">
-                                    <i>
-                                        <span>Published on: {{blog.publishedDate
-                                            | date:"medium"}}</span>
-                                        <br>
-                                        <span *ngIf=blog.updatedDate>Edited on: {{blog.updatedDate
-                                            | date:"medium"}}</span>
-                                    </i>
-                                </p>
-                                <a id="blg" [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full
-                                    Blog</a>
-                                <a id="blg" [routerLink]="['/blogs']" class="btn btn-danger btn-sm"
-                                    *ngIf="isAdmin">Delete
-                                    Blog</a>
-                            </div>
-                        </div>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
