@@ -26,8 +26,8 @@
                                     </p>
                                     <a id="blg" [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full
                                         Blog</a>
-                                    <a id="blg" [routerLink]="['/blogs']" class="btn btn-danger btn-sm"
-                                        *ngIf="isAdmin">Delete
+                                    <a id="blg" class="btn btn-danger btn-sm" *ngIf="isAdmin"
+                                        (click)="deleteBlog(blog.id)">Delete
                                         Blog</a>
                                 </div>
                             </div>

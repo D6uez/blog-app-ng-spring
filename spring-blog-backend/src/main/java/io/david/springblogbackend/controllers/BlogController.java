@@ -46,7 +46,7 @@ public class BlogController {
         return blogService.updateOrCreateBlog(newBlog, id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteBlog/{id}")
     void deleteBlog(@PathVariable Long id) {
         blogService.deleteBlog(id);
     }

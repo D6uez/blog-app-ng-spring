@@ -40,6 +40,12 @@ export class BlogListComponent implements OnInit, OnDestroy {
     }
   }
 
+  deleteBlog(id: number) {
+    this.sub = this.blogService.deleteBlog(id).subscribe(res => {
+      window.location.reload();
+    });
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

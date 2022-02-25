@@ -29,8 +29,12 @@ export class BlogService {
     //Makes a post request to api and creates a single blog
     newBlog(body: string, title: string, topic: string, authorId: number): Observable<IBlog> {
         return this.http.post<IBlog>(this.dbUrl + "/newBlog", {
-            body, title, topic, authorId
+            body, title, topic
         }, httpOptions);
+    }
+
+    deleteBlog(id: number): Observable<IBlog> {
+        return this.http.delete<IBlog>(this.dbUrl + "/deleteBlog/" + id).pipe(tap(() => catchError(this.handleError)));
     }
 
     private handleError(err: HttpErrorResponse) {
