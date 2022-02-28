@@ -32,6 +32,7 @@ export class CreateBlogComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isBlogCreationFailed = false;
+        window.location.reload();
       },
       error: err => {
         console.log(err);

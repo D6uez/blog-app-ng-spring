@@ -26,7 +26,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
     // This gets the blog list
     this.sub = this.blogService.getBlogs().subscribe({
       next: blogs => {
-        this.blogs = blogs;
+        this.blogs = blogs.reverse();
       },
       error: err => this.errorMessage = err
     });
