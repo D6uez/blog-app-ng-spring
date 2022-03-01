@@ -33,6 +33,12 @@ export class BlogService {
         }, httpOptions);
     }
 
+    editBlog(id: number, body: string, title: string, topic: string): Observable<IBlog> {
+        return this.http.put<IBlog>(this.dbUrl + "/editBlog/" + id, {
+            body, title, topic
+        }, httpOptions);
+    }
+
     deleteBlog(id: number): Observable<IBlog> {
         return this.http.delete<IBlog>(this.dbUrl + "/deleteBlog/" + id).pipe(tap(() => catchError(this.handleError)));
     }

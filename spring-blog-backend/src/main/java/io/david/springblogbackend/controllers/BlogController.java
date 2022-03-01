@@ -41,7 +41,7 @@ public class BlogController {
         return blogService.createBlog(newBlog);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editBlog/{id}")
     Blog updateBlog(@RequestBody Blog newBlog, @PathVariable Long id) {
         return blogService.updateOrCreateBlog(newBlog, id);
     }

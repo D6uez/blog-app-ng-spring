@@ -15,6 +15,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BlogListComponent } from './blogs/blog-list.component';
 import { BlogDetailComponent } from './blogs/blog-detail.component';
 import { CreateBlogComponent } from './blogs/create-blog.component';
+import { EditBlogComponent } from './blogs/edit-blog.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CreateBlogComponent } from './blogs/create-blog.component';
     BoardUserComponent,
     BlogListComponent,
     BlogDetailComponent,
-    CreateBlogComponent
+    CreateBlogComponent,
+    EditBlogComponent
   ],
   imports: [
     BrowserModule,
