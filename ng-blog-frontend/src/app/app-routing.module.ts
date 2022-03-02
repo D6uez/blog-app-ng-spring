@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 const routes: Routes = [
   { path: "blogs/editBlog/:id", component: EditBlogComponent },
   { path: "blogs/newBlog", component: CreateBlogComponent },
   { path: "blogs/:id", component: BlogDetailComponent },
   { path: 'blogs', component: BlogListComponent },
+  { path: 'users', component: UserListComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

@@ -1,0 +1,29 @@
+<div class="card-header bg-light">
+    {{pageTitle}}
+</div>
+<div class="card" style="width:50rem; margin: 1.75rem auto;">
+    <div class="card-body">
+        <div class="container">
+            <table class="table table-striped" *ngIf="users.length">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <th>{{ user.id }}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.active}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

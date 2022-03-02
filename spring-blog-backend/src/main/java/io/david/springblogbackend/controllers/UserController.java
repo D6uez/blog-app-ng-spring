@@ -3,6 +3,7 @@ package io.david.springblogbackend.controllers;
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.david.springblogbackend.models.User;
 import io.david.springblogbackend.services.UserService;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/user")
 @RestController
 public class UserController {

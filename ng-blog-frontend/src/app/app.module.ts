@@ -16,6 +16,7 @@ import { BlogListComponent } from './blogs/blog-list.component';
 import { BlogDetailComponent } from './blogs/blog-detail.component';
 import { CreateBlogComponent } from './blogs/create-blog.component';
 import { EditBlogComponent } from './blogs/edit-blog.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EditBlogComponent } from './blogs/edit-blog.component';
     BlogListComponent,
     BlogDetailComponent,
     CreateBlogComponent,
-    EditBlogComponent
+    EditBlogComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
