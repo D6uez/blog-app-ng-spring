@@ -8,11 +8,14 @@ import { TokenStorageService } from './_services/token-storage.service';
 })
 export class AppComponent implements OnInit {
   title = 'ng-blog-frontend';
-  private roles: string = '';
+  roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+
+  homeURL = "";
+
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -23,7 +26,18 @@ export class AppComponent implements OnInit {
       this.roles = user.roles;
       this.username = user.username;
     }
+
+    if (this.roles.includes("ROLE_USER")) {
+      this.homeURL = "boardUser";
+    }
+    if (this.roles.includes("ROLE_MOD")) {
+      this.homeURL = "boardMod";
+    }
+    if (this.roles.includes("ROLE_ADMIN")) {
+      this.homeURL = "boardAdmin";
+    }
   }
+
 
   logout(): void {
     this.tokenStorageService.logout();

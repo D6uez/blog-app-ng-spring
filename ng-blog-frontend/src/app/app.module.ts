@@ -33,7 +33,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
     BlogDetailComponent,
     CreateBlogComponent,
     EditBlogComponent,
-    UserListComponent
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

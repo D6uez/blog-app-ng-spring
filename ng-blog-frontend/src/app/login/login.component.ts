@@ -1,5 +1,7 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -34,23 +36,28 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     const { username, password } = this.form;
     this.authService.login(username, password).subscribe(
-      data => {
+      (data) => {
         this.tokenStorage.saveToken(data.jwt);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        console.log(typeof this.roles);
-        this.roles = this.tokenStorage.getUser();
-        console.log(this.roles);
-        this.reloadPage();
+        this.roles = this.tokenStorage.getUser().roles;
+
+        if (this.roles.includes("ROLE_USER")) {
+          this.router.navigate(['boardUser']);
+        }
+        if (this.roles.includes("ROLE_MOD")) {
+          this.router.navigate(['boardMod']);
+        }
+        if (this.roles.includes("ROLE_ADMIN")) {
+          this.router.navigate(['boardAdmin']);
+        }
       },
-      err => {
+      (err) => {
         this.errorMessage = err.message;
         this.isLoginFailed = true;
       }
     );
   }
-  reloadPage(): void {
-    window.location.reload();
-  }
 }
+

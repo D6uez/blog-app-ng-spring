@@ -10,6 +10,10 @@ export class BoardAdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!window.location.hash) {
+      window.location.hash = window.location + '#loaded';
+      window.location.reload();
+    }
   }
 
 }

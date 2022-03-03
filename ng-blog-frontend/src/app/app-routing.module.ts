@@ -4,6 +4,9 @@ import { BlogDetailComponent } from './blogs/blog-detail.component';
 import { BlogListComponent } from './blogs/blog-list.component';
 import { CreateBlogComponent } from './blogs/create-blog.component';
 import { EditBlogComponent } from './blogs/edit-blog.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'boardUser', component: BoardUserComponent },
+  { path: 'boardMod', component: BoardModeratorComponent },
+  { path: 'boardAdmin', component: BoardAdminComponent },
   { path: "home", component: HomeComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "**", redirectTo: "welcome", pathMatch: "full" }
