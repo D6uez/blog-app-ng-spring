@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardAdminComponent implements OnInit {
 
+  pageTitle = "Administrator";
+
   constructor() { }
 
   ngOnInit(): void {
