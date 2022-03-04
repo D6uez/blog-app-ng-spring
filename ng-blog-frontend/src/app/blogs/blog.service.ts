@@ -27,9 +27,9 @@ export class BlogService {
     }
 
     //Makes a post request to api and creates a single blog
-    newBlog(body: string, title: string, topic: string, authorId: number): Observable<IBlog> {
+    newBlog(body: string, title: string, topic: string, author: string): Observable<IBlog> {
         return this.http.post<IBlog>(this.dbUrl + "/newBlog", {
-            body, title, topic
+            body, title, topic, author
         }, httpOptions);
     }
 

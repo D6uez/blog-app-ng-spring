@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../_services/token-storage.service';
 import { BlogService } from './blog.service';
 
 @Component({
@@ -12,24 +13,30 @@ export class CreateBlogComponent implements OnInit {
   form: any = {
     body: null,
     title: null,
-    topic: null,
-    authorId: 0
+    topic: null
   };
 
   isSuccessful: boolean = false;
   isBlogCreationFailed: boolean = false;
+  isLoggedIn: boolean = false;
+  author: string = '';
   errorMessage: string = '';
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      console.log(user);
+      this.author = user.username;
+    }
   }
 
   onSubmit(): void {
-    const { body, title, topic, authorId } = this.form;
-    this.blogService.newBlog(body, title, topic, authorId).subscribe({
+    const { body, title, topic } = this.form;
+    this.blogService.newBlog(body, title, topic, this.author).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.isSuccessful = true;
         this.isBlogCreationFailed = false;
         window.location.reload();

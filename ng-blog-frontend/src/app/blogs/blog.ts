@@ -6,5 +6,5 @@ export interface IBlog {
     title: string;
     topic: string;
     updatedDate: Date;
-    authorId: number;
+    author: string;
 }

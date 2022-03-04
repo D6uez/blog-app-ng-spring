@@ -2,6 +2,7 @@ package io.david.springblogbackend.models;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -22,11 +23,24 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String body;
+
     private Timestamp publishedDate;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     private Timestamp updatedDate;
-    private Long userId;
+    private String author;
 
     @Enumerated
     private Topic topic;
@@ -34,23 +48,15 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(Long id, String title, String body, Timestamp publishedDate, Timestamp updatedDate, Long userId,
+    public Blog(Long id, String title, String body, Timestamp publishedDate, Timestamp updatedDate, String author,
             Topic topic) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.publishedDate = publishedDate;
         this.updatedDate = updatedDate;
-        this.userId = userId;
+        this.author = author;
         this.topic = topic;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -87,12 +93,12 @@ public class Blog {
         updatedDate = new Timestamp(System.currentTimeMillis());
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Topic getTopic() {

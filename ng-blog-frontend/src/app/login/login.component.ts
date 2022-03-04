@@ -1,7 +1,5 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -54,7 +52,8 @@ export class LoginComponent implements OnInit {
         }
       },
       (err) => {
-        this.errorMessage = err.message;
+        console.log(err);
+        this.errorMessage = err;
         this.isLoginFailed = true;
       }
     );
