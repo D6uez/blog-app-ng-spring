@@ -25,7 +25,10 @@
                         #body="ngModel"></textarea>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Post</button>
+                    <button type="submit" class="btn btn-primary" id="blg">Post</button>
+                    <button class="btn btn-outline-secondary btn-sm" style="width:80px" (click)="onBack()">
+                        <i class="fa fa-chevron-left"></i> Back
+                    </button>
                 </div>
             </form>
         </div>

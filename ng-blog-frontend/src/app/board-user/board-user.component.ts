@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-board-user',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardUserComponent implements OnInit {
 
-  constructor() { }
+  pageTitle = "Administrator";
+
+  currentUser: any;
+
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (!window.location.hash) {
-      window.location.hash = window.location + '#loaded';
-      window.location.reload();
-    }
+    this.currentUser = this.token.getUser();
   }
-
 }

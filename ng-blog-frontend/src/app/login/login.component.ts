@@ -29,6 +29,16 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
+    if (this.roles.includes("ROLE_USER")) {
+      this.router.navigate(['boardUser']);
+    }
+    if (this.roles.includes("ROLE_MOD")) {
+      this.router.navigate(['boardMod']);
+    }
+    if (this.roles.includes("ROLE_ADMIN")) {
+      this.router.navigate(['boardAdmin']);
+    }
   }
 
   onSubmit(): void {
@@ -41,15 +51,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
 
-        if (this.roles.includes("ROLE_USER")) {
-          this.router.navigate(['boardUser']);
-        }
-        if (this.roles.includes("ROLE_MOD")) {
-          this.router.navigate(['boardMod']);
-        }
-        if (this.roles.includes("ROLE_ADMIN")) {
-          this.router.navigate(['boardAdmin']);
-        }
+        window.location.reload();
       },
       (err) => {
         console.log(err);

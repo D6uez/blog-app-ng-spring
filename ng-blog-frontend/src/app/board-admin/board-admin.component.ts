@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-board-admin',
@@ -9,13 +10,12 @@ export class BoardAdminComponent implements OnInit {
 
   pageTitle = "Administrator";
 
-  constructor() { }
+  currentUser: any;
+
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit(): void {
-    if (!window.location.hash) {
-      window.location.hash = window.location + '#loaded';
-      window.location.reload();
-    }
+    this.currentUser = this.token.getUser();
   }
 
 }

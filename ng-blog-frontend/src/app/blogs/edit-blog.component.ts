@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IBlog } from './blog';
 import { BlogService } from './blog.service';
@@ -20,7 +20,7 @@ export class EditBlogComponent implements OnInit {
   errorMessage: string = '';
   sub!: Subscription;
 
-  constructor(private blogService: BlogService, private route: ActivatedRoute) { }
+  constructor(private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     //Gets the id from the url parameter
@@ -38,7 +38,7 @@ export class EditBlogComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isBlogEditFailed = false;
-        window.location.reload();
+        this.router.navigate(['/blogs', this.blog!.id]);
       },
       error: error => {
         console.log(error);
@@ -47,6 +47,10 @@ export class EditBlogComponent implements OnInit {
       }
     })
 
+  }
+
+  onBack(): void {
+    this.router.navigate(['/blogs'])
   }
 
 }

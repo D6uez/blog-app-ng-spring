@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { BlogService } from './blog.service';
 
@@ -22,13 +23,12 @@ export class CreateBlogComponent implements OnInit {
   author: string = '';
   errorMessage: string = '';
 
-  constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService) { }
+  constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      console.log(user);
       this.author = user.username;
     }
   }
@@ -39,13 +39,17 @@ export class CreateBlogComponent implements OnInit {
       next: (data: any) => {
         this.isSuccessful = true;
         this.isBlogCreationFailed = false;
-        window.location.reload();
+        this.router.navigate(['/blogs']);
       },
       error: err => {
         console.log(err);
         this.isBlogCreationFailed = true;
       }
     })
+  }
+
+  onBack(): void {
+    this.router.navigate(['/blogs'])
   }
 
 }
