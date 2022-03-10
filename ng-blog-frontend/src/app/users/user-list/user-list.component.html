@@ -3,6 +3,17 @@
 </div>
 <div class="card" style="width:50rem; margin: 1.75rem auto;">
     <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md4">
+                <input type="text" [(ngModel)]="listFilter">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Filtered by: {{ listFilter }}</h4>
+            </div>
+        </div>
         <div class="container">
             <table class="table table-striped" *ngIf="users.length">
                 <thead>
@@ -16,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users">
+                    <tr *ngFor="let user of filteredUsers">
                         <th>{{ user.id }}</th>
                         <td>{{user.firstName}}</td>
                         <td>{{user.lastName}}</td>

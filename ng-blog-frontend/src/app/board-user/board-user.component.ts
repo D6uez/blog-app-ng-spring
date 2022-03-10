@@ -8,7 +8,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class BoardUserComponent implements OnInit {
 
-  pageTitle = "Administrator";
+  pageTitle = "User";
 
   currentUser: any;
 

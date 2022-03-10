@@ -30,15 +30,6 @@ public class Blog {
     private String body;
 
     private Timestamp publishedDate;
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     private Timestamp updatedDate;
     private String author;
 
@@ -99,6 +90,14 @@ public class Blog {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Topic getTopic() {

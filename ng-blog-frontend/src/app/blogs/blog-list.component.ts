@@ -15,6 +15,19 @@ export class BlogListComponent implements OnInit, OnDestroy {
   errorMessage: string = "";
   sub!: Subscription;
 
+  private _listFilter: string = "";
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredBlogs = this.performFilter(value);
+  }
+
+  filteredBlogs: IBlog[] = [];
+
   blogs: IBlog[] = [];
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
@@ -22,11 +35,18 @@ export class BlogListComponent implements OnInit, OnDestroy {
 
   constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService) { }
 
+  performFilter(filterBy: string): IBlog[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.blogs.filter((product: IBlog) =>
+      product.title.toLocaleLowerCase().includes(filterBy));
+  }
+
   ngOnInit(): void {
     // This gets the blog list
     this.sub = this.blogService.getBlogs().subscribe({
       next: blogs => {
         this.blogs = blogs.reverse();
+        this.filteredBlogs = this.blogs;
       },
       error: err => this.errorMessage = err
     });
