@@ -9,6 +9,9 @@
                         style="color: white;">
                         <i class="fa fa-plus" style="color: white;"></i>
                         Create Blog</a></button>
+                <a id="blg" class="btn btn-primary" *ngIf="isAdmin" (click)="exportBlogs()" style='float: right'> <i
+                        class="fa fa-file-excel-o" style="color: white;"></i> Export
+                    Blogs</a>
                 <div class="row">
                     <div class="col-md-2">Filter by:</div>
                     <div class="col-md4">

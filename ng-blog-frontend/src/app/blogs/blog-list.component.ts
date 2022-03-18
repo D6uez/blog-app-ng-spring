@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ExportBlogsService } from '../_services/export-blogs.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { IBlog } from './blog';
 import { BlogService } from './blog.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-blog-list',
@@ -33,7 +35,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
   roles: any;
 
-  constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService) { }
+  constructor(private blogService: BlogService, private tokenStorageService: TokenStorageService, private exportBlogsService: ExportBlogsService) { }
 
   performFilter(filterBy: string): IBlog[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -63,6 +65,12 @@ export class BlogListComponent implements OnInit, OnDestroy {
   deleteBlog(id: number) {
     this.sub = this.blogService.deleteBlog(id).subscribe(res => {
       window.location.reload();
+    });
+  }
+
+  exportBlogs() {
+    this.sub = this.exportBlogsService.exportBlogs().subscribe(data => {
+      saveAs(data, "bloglist.xlsx");
     });
   }
 
