@@ -1,35 +1,36 @@
-<div class="card-header bg-light">
-    {{ pageTitle }}
-</div>
-<div class="card" style="width:50rem; margin: 1.75rem auto;">
-    <div class="card-body">
-        <div class="container">
-            <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="topic">Topic</label>
-                    <select class="form-select" id="topic" name="topic" [(ngModel)]="form.topic" required
-                        #topic="ngModel">
-                        <option selected>Choose...</option>
-                        <option value="GENERAL">General</option>
-                        <option value="TECH">Tech</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Blog Title"
-                        [(ngModel)]="form.title" required minlength="3" maxlength="100" #title="ngModel">
-                </div>
-                <div class="mb-3">
-                    <label for="body" class="form-label">Body</label>
-                    <textarea class="form-control" id="body" name="body" rows="3" [(ngModel)]="form.body" required
-                        #body="ngModel"></textarea>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary" id="blg">Post</button>
-                    <button class="btn btn-outline-secondary btn-sm" style="width:80px" (click)="onBack()">
-                        <i class="fa fa-chevron-left"></i> Back
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="card-header bg-light">{{ pageTitle }}</div>
+<div class="card" style="width: 50rem; margin: 1.75rem auto;">
+	<div class="card-body">
+		<div class="container">
+			<form *ngIf="!isSuccessful" name="form"
+				(ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="topic">Topic</label> <select
+						class="form-select" id="topic" name="topic"
+						[(ngModel)]="form.topic" required #topic="ngModel">
+						<option selected>Choose...</option>
+						<option value="GENERAL">General</option>
+						<option value="TECH">Tech</option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="title" class="form-label">Title</label> <input
+						type="text" class="form-control" id="title" name="title"
+						placeholder="Blog Title" [(ngModel)]="form.title" required
+						minlength="3" maxlength="100" #title="ngModel">
+				</div>
+				<div class="mb-3">
+					<label for="body" class="form-label">Body</label>
+					<textarea class="form-control" id="body" name="body" rows="3"
+						[(ngModel)]="form.body" required #body="ngModel"></textarea>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary" id="blg">Post</button>
+					<button class="btn btn-outline-secondary btn-sm"
+						style="width: 80px" (click)="onBack()">
+						<i class="fa fa-chevron-left"></i> Back
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>

@@ -1,21 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
 @import "~font-awesome/css/font-awesome.min.css";
+
 div.card-header {
- font-size: large;
+	font-size: large;
 }
 
 a {
-  text-decoration: none; 
+	text-decoration: none;
 }
+
 a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
+
 span {
-  font-size: 0.7rem;
+	font-size: 0.7rem;
 }
 
 .card {
-  width:auto; 
-  margin: 1.75rem auto;
+	width: auto;
+	margin: 1.75rem auto;
 }

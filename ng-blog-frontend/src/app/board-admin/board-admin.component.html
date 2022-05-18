@@ -1,16 +1,16 @@
-<div class="card-header bg-light">
-    {{pageTitle}}
-</div>
+<div class="card-header bg-light">{{pageTitle}}</div>
 <div class="container">
-    <div class="col align-self-start">
-        <h3>Welcome {{ currentUser.username }}</h3>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a [routerLink]="['/users']"> View/Edit Users</a></li>
-                <li class="list-group-item"><a [routerLink]="['/blogs']"> View/Edit Blogs</a></li>
-            </ul>
-        </div>
-    </div>
+	<div class="col align-self-start">
+		<h3>Welcome {{ currentUser.username }}</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><a [routerLink]="['/users']">
+						View/Edit Users</a></li>
+				<li class="list-group-item"><a [routerLink]="['/blogs']">
+						View/Edit Blogs</a></li>
+			</ul>
+		</div>
+	</div>
 </div>

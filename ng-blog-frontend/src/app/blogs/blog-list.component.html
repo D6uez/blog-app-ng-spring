@@ -1,61 +1,56 @@
-<div class="card-header bg-light">
-    {{pageTitle}}
-</div>
-<div class="card" style="width:50rem; margin: 1.75rem auto;">
-    <div class="card-body">
-        <div class="container">
-            <div class="table-responsive">
-                <button type="button" class="btn btn-primary"><a [routerLink]="['/blogs/newBlog']"
-                        style="color: white;">
-                        <i class="fa fa-plus" style="color: white;"></i>
-                        Create Blog</a></button>
-                <a id="blg" class="btn btn-primary" *ngIf="isAdmin" (click)="exportBlogs()" style='float: right'> <i
-                        class="fa fa-file-excel-o" style="color: white;"></i> Export
-                    Blogs</a>
-                <div class="row">
-                    <div class="col-md-2">Filter by:</div>
-                    <div class="col-md4">
-                        <input type="text" [(ngModel)]="listFilter">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Filtered by: {{ listFilter }}</h4>
-                    </div>
-                </div>
-                <table class="table" *ngIf="blogs.length">
-                    <tbody>
-                        <tr *ngFor="let blog of filteredBlogs">
-                            <div class="card">
-                                <div class="card-header">
-                                    Topic: {{ blog.topic | titlecase}}
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a [routerLink]="['/blogs', blog.id]"> {{blog.title}}</a>
-                                    </h5>
-                                    <p class="card-text" style="color:grey">
-                                        <i>
-                                            <span>Published on: {{blog.publishedDate
-                                                | date:"medium"}}</span>
-                                            <br>
-                                            <span *ngIf=blog.updatedDate>Edited on: {{blog.updatedDate
-                                                | date:"medium"}}</span>
-                                        </i>
-                                    </p>
-                                    <a id="blg" [routerLink]="['/blogs', blog.id]" class="btn btn-primary">View Full
-                                        Blog</a>
-                                    <a id="blg" [routerLink]="['/blogs/editBlog', blog.id]"
-                                        class="btn btn-secondary btn-sm" *ngIf="isAdmin">Edit
-                                        Blog</a>
-                                    <a id="blg" class="btn btn-danger btn-sm" *ngIf="isAdmin"
-                                        (click)="deleteBlog(blog.id)">Delete
-                                        Blog</a>
-                                </div>
-                            </div>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="card-header bg-light">{{pageTitle}}</div>
+<div class="card" style="width: 50rem; margin: 1.75rem auto;">
+	<div class="card-body">
+		<div class="container">
+			<div class="table-responsive">
+				<button type="button" class="btn btn-primary">
+					<a [routerLink]="['/blogs/newBlog']" style="color: white;"> <i
+						class="fa fa-plus" style="color: white;"></i> Create Blog
+					</a>
+				</button>
+				<a id="blg" class="btn btn-primary" *ngIf="isAdmin"
+					(click)="exportBlogs()" style='float: right'> <i
+					class="fa fa-file-excel-o" style="color: white;"></i> Export Blogs
+				</a>
+				<div class="row">
+					<div class="col-md-2">Filter by:</div>
+					<div class="col-md4">
+						<input type="text" [(ngModel)]="listFilter">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Filtered by: {{ listFilter }}</h4>
+					</div>
+				</div>
+				<table class="table" *ngIf="blogs.length">
+					<tbody>
+						<tr *ngFor="let blog of filteredBlogs">
+							<div class="card">
+								<div class="card-header">Topic: {{ blog.topic |
+									titlecase}}</div>
+								<div class="card-body">
+									<h5 class="card-title">
+										<a [routerLink]="['/blogs', blog.id]"> {{blog.title}}</a>
+									</h5>
+									<p class="card-text" style="color: grey">
+										<i> <span>Published on: {{blog.publishedDate |
+												date:"medium"}}</span> <br> <span *ngIf=blog.updatedDate>Edited
+												on: {{blog.updatedDate | date:"medium"}}</span>
+										</i>
+									</p>
+									<a id="blg" [routerLink]="['/blogs', blog.id]"
+										class="btn btn-primary">View Full Blog</a> <a id="blg"
+										[routerLink]="['/blogs/editBlog', blog.id]"
+										class="btn btn-secondary btn-sm" *ngIf="isAdmin">Edit Blog</a>
+									<a id="blg" class="btn btn-danger btn-sm" *ngIf="isAdmin"
+										(click)="deleteBlog(blog.id)">Delete Blog</a>
+								</div>
+							</div>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
